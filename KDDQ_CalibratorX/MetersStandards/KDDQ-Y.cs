@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Collections.Specialized;
-using System.IO;
 
 namespace KDDQ_CalibratorX.MetersStandards
 {
-    public class M143M : IDevice
+    public class KDDQ_Y:IDevice
     {
         // 其他代码...
 
@@ -18,7 +18,7 @@ namespace KDDQ_CalibratorX.MetersStandards
         private TaskCompletionSource<string> _tcs;
         private CancellationTokenSource _cts;
 
-        public M143M(string portName)
+        public KDDQ_Y(string portName)
         {
             _serialPort = new SerialPort(portName);
             _serialPort.DataReceived += SerialPort_DataReceived;
@@ -26,8 +26,11 @@ namespace KDDQ_CalibratorX.MetersStandards
 
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            var ret   = _serialPort.ReadExisting();
+            string ret = _serialPort.ReadExisting();
+
             var data = ParseCommand(ret);
+
+
             _tcs?.TrySetResult(data);
         }
 
@@ -106,17 +109,17 @@ namespace KDDQ_CalibratorX.MetersStandards
         /// <exception cref="NotImplementedException"></exception>
         public string GenerateCommand(string keyword, string value)
         {
-            string ret = "";
+            string ret="";
             switch (keyword)
             {
-                case "AC":
-                    ret = $"M143M,AC\r\n";
+                case "RANGE":
+                    ret = $"KDST,[RANGE,{value}]\r\n";
                     break;
-                case "V":
-                    ret = $"M143M,VOLATGE,{value}]\r\n";
+                case "WAVE":
+                    ret = $"KDST,[WAVE,{value}]\r\n";
                     break;
-                case "AUTO":
-                    ret = $"M143M,RANGE,AUTO\r\n";
+                case "READ":
+                    ret = $"KDST,[READ,{value}]\r\n";
                     break;
                 default:
                     break;
@@ -165,5 +168,4 @@ namespace KDDQ_CalibratorX.MetersStandards
             _serialPort.Close();
         }
     }
-
 }

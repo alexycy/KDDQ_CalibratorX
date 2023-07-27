@@ -8,11 +8,13 @@ namespace KDDQ_CalibratorX.MetersStandards
 {
     public interface IDevice
     {
-        void ConnectAsync();
+        void ConnectAsync(string portname);
         void DisconnectAsync();
+        Task WriteAsync(string data);
         Task<string> ReadAsync(TimeSpan timeout);
-       void PreCMD(string keywords, string values);
-       string GenerateCommand(string keyword, string value);
+        string ParseCommand(string command);
+        List<string> SplitAndPackageCommand(string keywords, string values);
+        string GenerateCommand(string keyword, string value);
     }
 
 }

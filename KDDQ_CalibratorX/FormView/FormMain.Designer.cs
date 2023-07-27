@@ -33,19 +33,19 @@
             this.kryptonManager1 = new Krypton.Toolkit.KryptonManager(this.components);
             this.kryptonToolStrip1 = new Krypton.Toolkit.KryptonToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
-            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
-            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
-            this.commonCircularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Common.CommonCircularPictureBox();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
-            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
             this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.打开数据文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripDropDownButton2 = new System.Windows.Forms.ToolStripDropDownButton();
             this.打开配置文件ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.kryptonTableLayoutPanel1 = new Krypton.Toolkit.KryptonTableLayoutPanel();
+            this.kryptonPanel1 = new Krypton.Toolkit.KryptonPanel();
+            this.kryptonLabel2 = new Krypton.Toolkit.KryptonLabel();
+            this.commonCircularPictureBox1 = new Krypton.Toolkit.Suite.Extended.Common.CommonCircularPictureBox();
+            this.kryptonLabel1 = new Krypton.Toolkit.KryptonLabel();
+            this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.vS2005Theme1 = new WeifenLuo.WinFormsUI.Docking.VS2005Theme();
             this.kryptonToolStrip1.SuspendLayout();
@@ -84,8 +84,74 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(167, 56);
+            this.toolStripButton1.Size = new System.Drawing.Size(167, 53);
             this.toolStripButton1.Text = "toolStripButton1";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(167, 53);
+            this.toolStripButton2.Text = "toolStripButton2";
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(105, 53);
+            this.toolStripButton3.Text = "启动任务";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(105, 53);
+            this.toolStripButton4.Text = "暂停任务";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开数据文件ToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(122, 53);
+            this.toolStripDropDownButton1.Text = "校准数据";
+            // 
+            // 打开数据文件ToolStripMenuItem
+            // 
+            this.打开数据文件ToolStripMenuItem.Name = "打开数据文件ToolStripMenuItem";
+            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(263, 40);
+            this.打开数据文件ToolStripMenuItem.Text = "打开数据文件";
+            this.打开数据文件ToolStripMenuItem.Click += new System.EventHandler(this.打开数据文件ToolStripMenuItem_Click);
+            // 
+            // toolStripDropDownButton2
+            // 
+            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.打开配置文件ToolStripMenuItem});
+            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
+            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
+            this.toolStripDropDownButton2.Size = new System.Drawing.Size(122, 53);
+            this.toolStripDropDownButton2.Text = "校准配置";
+            // 
+            // 打开配置文件ToolStripMenuItem
+            // 
+            this.打开配置文件ToolStripMenuItem.Name = "打开配置文件ToolStripMenuItem";
+            this.打开配置文件ToolStripMenuItem.Size = new System.Drawing.Size(263, 40);
+            this.打开配置文件ToolStripMenuItem.Text = "打开配置文件";
             // 
             // kryptonTableLayoutPanel1
             // 
@@ -121,13 +187,14 @@
             this.kryptonPanel1.Size = new System.Drawing.Size(1278, 54);
             this.kryptonPanel1.TabIndex = 2;
             // 
-            // kryptonLabel1
+            // kryptonLabel2
             // 
-            this.kryptonLabel1.Location = new System.Drawing.Point(83, 10);
-            this.kryptonLabel1.Name = "kryptonLabel1";
-            this.kryptonLabel1.Size = new System.Drawing.Size(149, 33);
-            this.kryptonLabel1.TabIndex = 1;
-            this.kryptonLabel1.Values.Text = "kryptonLabel1";
+            this.kryptonLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.kryptonLabel2.Location = new System.Drawing.Point(1107, 10);
+            this.kryptonLabel2.Name = "kryptonLabel2";
+            this.kryptonLabel2.Size = new System.Drawing.Size(149, 33);
+            this.kryptonLabel2.TabIndex = 3;
+            this.kryptonLabel2.Values.Text = "kryptonLabel2";
             // 
             // commonCircularPictureBox1
             // 
@@ -138,32 +205,13 @@
             this.commonCircularPictureBox1.TabIndex = 2;
             this.commonCircularPictureBox1.TabStop = false;
             // 
-            // toolStripButton2
+            // kryptonLabel1
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(167, 56);
-            this.toolStripButton2.Text = "toolStripButton2";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(195, 56);
-            this.toolStripButton3.Text = "toolStripButton3";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(195, 56);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.kryptonLabel1.Location = new System.Drawing.Point(83, 10);
+            this.kryptonLabel1.Name = "kryptonLabel1";
+            this.kryptonLabel1.Size = new System.Drawing.Size(149, 33);
+            this.kryptonLabel1.TabIndex = 1;
+            this.kryptonLabel1.Values.Text = "kryptonLabel1";
             // 
             // kryptonStatusStrip1
             // 
@@ -178,50 +226,6 @@
             this.kryptonStatusStrip1.Size = new System.Drawing.Size(1284, 30);
             this.kryptonStatusStrip1.TabIndex = 3;
             this.kryptonStatusStrip1.Text = "kryptonStatusStrip1";
-            // 
-            // kryptonLabel2
-            // 
-            this.kryptonLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.kryptonLabel2.Location = new System.Drawing.Point(1107, 10);
-            this.kryptonLabel2.Name = "kryptonLabel2";
-            this.kryptonLabel2.Size = new System.Drawing.Size(149, 33);
-            this.kryptonLabel2.TabIndex = 3;
-            this.kryptonLabel2.Values.Text = "kryptonLabel2";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开数据文件ToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton1.Image")));
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(122, 56);
-            this.toolStripDropDownButton1.Text = "校准数据";
-            // 
-            // toolStripDropDownButton2
-            // 
-            this.toolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripDropDownButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.打开配置文件ToolStripMenuItem});
-            this.toolStripDropDownButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButton2.Image")));
-            this.toolStripDropDownButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton2.Name = "toolStripDropDownButton2";
-            this.toolStripDropDownButton2.Size = new System.Drawing.Size(122, 56);
-            this.toolStripDropDownButton2.Text = "校准配置";
-            // 
-            // 打开数据文件ToolStripMenuItem
-            // 
-            this.打开数据文件ToolStripMenuItem.Name = "打开数据文件ToolStripMenuItem";
-            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
-            this.打开数据文件ToolStripMenuItem.Text = "打开数据文件";
-            this.打开数据文件ToolStripMenuItem.Click += new System.EventHandler(this.打开数据文件ToolStripMenuItem_Click);
-            // 
-            // 打开配置文件ToolStripMenuItem
-            // 
-            this.打开配置文件ToolStripMenuItem.Name = "打开配置文件ToolStripMenuItem";
-            this.打开配置文件ToolStripMenuItem.Size = new System.Drawing.Size(288, 34);
-            this.打开配置文件ToolStripMenuItem.Text = "打开配置文件";
             // 
             // dockPanel1
             // 
