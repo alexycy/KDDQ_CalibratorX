@@ -1,5 +1,6 @@
 ﻿using KDDQ_CalibratorX.AuxiliaryMeans;
 using KDDQ_CalibratorX.MetersStandards;
+using KDDQ_CalibratorX.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -89,9 +90,10 @@ namespace CalibrateFlow
                     // 执行读或写操作
                     if (config.OperationType == "READ")
                     {
+                        device.ConnectAsync(config.PortName);
 
                         // 发送读取指令
-                        var readCommand = device.SplitAndPackageCommand(config.Keyword, "NAN");
+                        var readCommand = device.SplitAndPackageCommand("READ", "NAN");
                         for (int k = 0; k < readCommand.Count; k++)
                         {
                             await device.WriteAsync(readCommand[k]);
@@ -105,9 +107,12 @@ namespace CalibrateFlow
                         // 将结果写入当前单元格
                         dataRow.Cells[j].Value = result;
                         dataRow.Cells[j].Style.BackColor = Color.Green;
+                        device.DisconnectAsync();
                     }
                     else if (config.OperationType == "WRITE")
                     {
+                        device.ConnectAsync(config.PortName);
+
                         // 获取当前单元格的数据
                         var value = dataRow.Cells[j].Value.ToString();
 
@@ -119,6 +124,7 @@ namespace CalibrateFlow
                         }
                         // 将结果写入当前单元格
                         dataRow.Cells[j].Style.BackColor = Color.Green;
+                        device.DisconnectAsync();
                     }
                     else if (config.OperationType == "CAL")
                     {

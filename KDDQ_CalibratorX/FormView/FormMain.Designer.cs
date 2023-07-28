@@ -48,11 +48,14 @@
             this.kryptonStatusStrip1 = new Krypton.Toolkit.KryptonStatusStrip();
             this.dockPanel1 = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.vS2005Theme1 = new WeifenLuo.WinFormsUI.Docking.VS2005Theme();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.kryptonToolStrip1.SuspendLayout();
             this.kryptonTableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
             this.kryptonPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commonCircularPictureBox1)).BeginInit();
+            this.kryptonStatusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // kryptonManager1
@@ -132,7 +135,7 @@
             // 打开数据文件ToolStripMenuItem
             // 
             this.打开数据文件ToolStripMenuItem.Name = "打开数据文件ToolStripMenuItem";
-            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(263, 40);
+            this.打开数据文件ToolStripMenuItem.Size = new System.Drawing.Size(315, 40);
             this.打开数据文件ToolStripMenuItem.Text = "打开数据文件";
             this.打开数据文件ToolStripMenuItem.Click += new System.EventHandler(this.打开数据文件ToolStripMenuItem_Click);
             // 
@@ -150,7 +153,7 @@
             // 打开配置文件ToolStripMenuItem
             // 
             this.打开配置文件ToolStripMenuItem.Name = "打开配置文件ToolStripMenuItem";
-            this.打开配置文件ToolStripMenuItem.Size = new System.Drawing.Size(263, 40);
+            this.打开配置文件ToolStripMenuItem.Size = new System.Drawing.Size(315, 40);
             this.打开配置文件ToolStripMenuItem.Text = "打开配置文件";
             // 
             // kryptonTableLayoutPanel1
@@ -219,6 +222,9 @@
             this.kryptonStatusStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonStatusStrip1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.kryptonStatusStrip1.ImageScalingSize = new System.Drawing.Size(28, 28);
+            this.kryptonStatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripProgressBar1});
             this.kryptonStatusStrip1.Location = new System.Drawing.Point(0, 706);
             this.kryptonStatusStrip1.Name = "kryptonStatusStrip1";
             this.kryptonStatusStrip1.ProgressBars = null;
@@ -226,6 +232,8 @@
             this.kryptonStatusStrip1.Size = new System.Drawing.Size(1284, 30);
             this.kryptonStatusStrip1.TabIndex = 3;
             this.kryptonStatusStrip1.Text = "kryptonStatusStrip1";
+            this.kryptonStatusStrip1.Layout += new System.Windows.Forms.LayoutEventHandler(this.kryptonStatusStrip1_Layout);
+            this.kryptonStatusStrip1.Resize += new System.EventHandler(this.kryptonStatusStrip1_Resize);
             // 
             // dockPanel1
             // 
@@ -235,6 +243,17 @@
             this.dockPanel1.Name = "dockPanel1";
             this.dockPanel1.Size = new System.Drawing.Size(1278, 581);
             this.dockPanel1.TabIndex = 6;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(206, 21);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(908, 20);
             // 
             // FormMain
             // 
@@ -253,6 +272,8 @@
             this.kryptonPanel1.ResumeLayout(false);
             this.kryptonPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.commonCircularPictureBox1)).EndInit();
+            this.kryptonStatusStrip1.ResumeLayout(false);
+            this.kryptonStatusStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -276,6 +297,8 @@
         private System.Windows.Forms.ToolStripMenuItem 打开配置文件ToolStripMenuItem;
         private WeifenLuo.WinFormsUI.Docking.DockPanel dockPanel1;
         private WeifenLuo.WinFormsUI.Docking.VS2005Theme vS2005Theme1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }
 }
 

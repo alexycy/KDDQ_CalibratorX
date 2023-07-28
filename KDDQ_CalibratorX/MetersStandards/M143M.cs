@@ -84,11 +84,11 @@ namespace KDDQ_CalibratorX.MetersStandards
             else
             {
                 var keywordList = keywords.Split(';');
-                var valueList = values.Split(';');
+                //var valueList = values.Split(';');
 
                 for (int i = 0; i < keywordList.Length; i++)
                 {
-                    string command = GenerateCommand(keywordList[i], valueList[i]);
+                    string command = GenerateCommand(keywordList[i], values);
                     ret.Add(command);
                 }
             }

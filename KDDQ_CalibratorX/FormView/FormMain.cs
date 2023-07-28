@@ -3,12 +3,14 @@ using CalibrateFlow;
 using KDDQ_CalibratorX.AuxiliaryMeans;
 using Krypton.Docking;
 using Krypton.Toolkit;
+using Microsoft.Win32;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -17,6 +19,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
+using OpenFileDialog = System.Windows.Forms.OpenFileDialog;
+using Timer = System.Windows.Forms.Timer;
 
 namespace KDDQ_CalibratorX
 {
@@ -30,6 +34,7 @@ namespace KDDQ_CalibratorX
         CancellationTokenSource cts;
         SemaphoreSlim pauseSemaphore;
         private bool _isPause;
+        Timer timer1;
 
         public FormMain()
         {
@@ -48,16 +53,37 @@ namespace KDDQ_CalibratorX
 
             formGrid.Activate();
 
+            // 将ToolStripProgressBar的宽度设置为StatusStrip的宽度减去其他控件的宽度
+            toolStripProgressBar1.Width = kryptonStatusStrip1.Width - toolStripStatusLabel1.Width - 20; // 20是预留的间隙
+
+            _isPause = false;   
         }
 
-        private void 打开数据文件ToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            if(toolStripProgressBar1.Value<100)
+                toolStripProgressBar1.Value += 20;
+            else
+                toolStripProgressBar1.Value =0;
+        }
+
+        private async void 打开数据文件ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-               GridViewOperation.LoadExcelFile(openFileDialog.FileName, formGrid.DataGridView1,formConfig.DataGridView1);
-               //GridViewOperation.LoadExcelFile(openFileDialog.FileName,kryptonPropertyGrid1);
+                timer1 = new Timer();
+                timer1.Interval = 200;
+                timer1.Tick += Timer1_Tick;
+                timer1.Start();
+                // 在后台线程中加载Excel文件
+                await Task.Run(() =>
+                {
+                    this.Invoke((Action)(() => GridViewOperation.LoadExcelFile(openFileDialog.FileName, formGrid.DataGridView1, formConfig.DataGridView1)));
+                });
+                timer1.Stop();
+                toolStripProgressBar1.Value = 100;
             }
         }
 
@@ -73,7 +99,13 @@ namespace KDDQ_CalibratorX
 
             // 使用calibrateFlowOperation来调用它的方法
             cts = new CancellationTokenSource();
-            await calibrateFlowOperation.CalibrateFlowOpeartion(formConfig.DataGridView1, formGrid.DataGridView1,cts, pauseSemaphore);
+
+
+            // 在后台线程中启动校准任务
+            await Task.Run(() =>
+            {
+                this.Invoke((Action)(() => calibrateFlowOperation.CalibrateFlowOpeartion(formConfig.DataGridView1, formGrid.DataGridView1, cts, pauseSemaphore)));
+            });
         }
 
         private async void toolStripButton3_Click(object sender, EventArgs e)
@@ -83,6 +115,8 @@ namespace KDDQ_CalibratorX
 
             if (!_isRunning)
             {
+
+
                 // 启动任务
                 await CalibrateStart();
 
@@ -127,6 +161,16 @@ namespace KDDQ_CalibratorX
             {
                 pauseSemaphore.Release();
             }
+        }
+
+        private void kryptonStatusStrip1_Layout(object sender, LayoutEventArgs e)
+        {
+          
+        }
+
+        private void kryptonStatusStrip1_Resize(object sender, EventArgs e)
+        {
+         
         }
     }
 }
